@@ -23,37 +23,55 @@ function Home() {
   };
 
   const handleSave = () => {
-    setSave(true)
-  }
+    setSave(true);
+  };
 
   return (
     <div>
-      <h2>Form Configurator</h2>
-      <div>
-        <h3>Available Fields</h3>
-        <ul>
-          {availableFields.map((field) => (
-            <li key={field.id}>
-              {field.label} - {field.type}
-              <button onClick={() => handleAddField(field)}>Add</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h3>Selected Fields</h3>
-        <ul>
-          {selectedFields.map((field) => (
-            <li key={field.id}>
-              {field.label} - {field.type}
-              <button onClick={() => handleRemoveField(field)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      {selectedFields.length !== 0 && (
+      {!save && (
         <div>
-          <button onClick={handleSave}>Save</button>
+          <h2>Form Configurator</h2>
+          <div>
+            <h3>Available Fields</h3>
+            <ul>
+              {availableFields.map((field) => (
+                <li className="list" key={field.id}>
+                  {field.label} - {field.type}
+                  &nbsp;&nbsp;
+                  <button
+                    className="button"
+                    onClick={() => handleAddField(field)}
+                  >
+                    Add
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3>Selected Fields</h3>
+            <ul>
+              {selectedFields.map((field) => (
+                <li className="list" key={field.id}>
+                  {field.label} - {field.type}
+                  &nbsp;&nbsp;
+                  <button
+                    className="Removebutton"
+                    onClick={() => handleRemoveField(field)}
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+      {selectedFields.length !== 0 && !save && (
+        <div>
+          <button className="button" onClick={handleSave}>
+            Save
+          </button>
         </div>
       )}
       {save && <FormField selectedFields={selectedFields} />}

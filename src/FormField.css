@@ -1,0 +1,67 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.render-form-container {
+  margin-bottom: 10px;
+}
+
+.required {
+  color: red;
+  margin-left: 5px;
+}
+
+/* Styles for input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Style for placeholder text */
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+  color: #999;
+}
+
+/* Style for focused input fields */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #66afe9;
+}
+
+/* Style for disabled input fields */
+input[type="text"]:disabled,
+input[type="email"]:disabled,
+input[type="password"]:disabled,
+textarea:disabled {
+  background-color: #f0f0f0;
+}
+
+/* Style for input fields in error state */
+input[type="text"].error,
+input[type="email"].error,
+input[type="password"].error,
+textarea.error {
+  border-color: #ff4d4d;
+}
+
+/* Style for text area */
+textarea {
+  resize: vertical;
+}
+

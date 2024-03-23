@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./FormField.css";
 
 function FormField({ selectedFields = {} }) {
   const [formData, setFormData] = useState({});
@@ -39,8 +40,11 @@ function FormField({ selectedFields = {} }) {
       case "text":
       case "textarea":
         return (
-          <div key={field.id}>
+          <div className="form-container" key={field.id}>
+            <div>
             <label>{field.label}</label>
+            <span className="required">*</span>
+            </div>
             {field.type === "textarea" ? (
               <textarea
                 onChange={(e) => handleChange(field.id, e.target.value)}
@@ -58,8 +62,11 @@ function FormField({ selectedFields = {} }) {
         );
       case "number":
         return (
-          <div key={field.id}>
+          <div className="form-container" key={field.id}>
+            <div>
             <label>Enter PhoneNumber:</label>
+            <span className="required">*</span>
+            </div>
             <input
               type="text"
               pattern="[0-9]*" // Pattern to allow only digits
@@ -74,8 +81,11 @@ function FormField({ selectedFields = {} }) {
         );
       case "dropdown":
         return (
-          <div key={field.id}>
+          <div className="form-container" key={field.id}>
+            <div>
             <label>{field.label}</label>
+            <span className="required">*</span>
+            </div>
             <select onChange={(e) => handleChange(field.id, e.target.value)}>
               <option value="">Select</option>
               {field.options.map((option, index) => (
@@ -91,8 +101,11 @@ function FormField({ selectedFields = {} }) {
         );
       case "email":
         return (
-          <div key={field.id}>
+          <div className="form-container" key={field.id}>
+            <div>
             <label>{field.label}</label>
+            <span className="required">*</span>
+            </div>
             <input
               type="email"
               onChange={(e) => handleChange(field.id, e.target.value)}
@@ -104,8 +117,11 @@ function FormField({ selectedFields = {} }) {
         );
       case "checkbox":
         return (
-          <div key={field.id}>
+          <div className="form-container" key={field.id}>
+            <div>
             <label>{field.label}</label>
+            <span className="required">*</span>
+            </div>
             {field.options.map((option, index) => (
               <div key={index}>
                 <input
@@ -130,7 +146,9 @@ function FormField({ selectedFields = {} }) {
     <>
       <h1>Form Fields</h1>
       <form onSubmit={handleSubmit}>
-        {selectedFields.map((field) => renderField(field))}
+        <div className="render-form-container">
+          {selectedFields.map((field) => renderField(field))}
+        </div>
         <button type="submit">Submit</button>
       </form>
     </>
